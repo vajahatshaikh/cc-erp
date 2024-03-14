@@ -1,0 +1,2 @@
+Create user from seeder for login.
+Integrate JWT and Add Auth guard.

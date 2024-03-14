@@ -15,6 +15,8 @@ export class AuthService {
         select: {
           id: true,
           email: true,
+          mobile_number: true,
+          name: true,
           password: true,
         },
         where: {
@@ -39,6 +41,8 @@ export class AuthService {
         id: user?.id,
         email: user?.email,
       });
+
+      delete user.password
       return {
         status: true,
         message: 'Login successfull.',

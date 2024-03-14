@@ -22,7 +22,7 @@ export function ValidatePassword(
 @ValidatorConstraint({ name: 'ValidatePassword' })
 class ValidatePasswordConstraint implements ValidatorConstraintInterface {
   validate(value: any, args: ValidationArguments) {
-    return /^(?=.[A-Z])(?=.\d)(?=.[!@#$%^&()+])[A-Za-z\d!@#$%^&*()+]{8,}$/.test(
+    return /^\S*(?=\S{8,})(?=\S*\d)(?=\S*[A-Z])(?=\S*[a-z])(?=\S*[!@#$%^&*? ])\S*$/.test(
       value,
     );
   }
