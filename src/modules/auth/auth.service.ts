@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@nestjs/common';
-import { AuthHelper } from 'src/common/helpers/auth.helper';
+import { AuthHelper } from 'src/modules/auth/auth.helper';
 import { UserRepository } from './repository/user-repository';
 
 @Injectable()
