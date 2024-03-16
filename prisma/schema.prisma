@@ -38,3 +38,17 @@ model PurchaseItem {
 
   @@map("purchase_items")
 }
+
+model Purchase {
+  id                 Int      @id @default(autoincrement())
+  purchase_date      DateTime @default(now())
+  bill_no            Int
+  supplier_name      String
+  purchase_item_name String
+  weight             Decimal  @db.Decimal(65, 2)
+  purchase_amount    Decimal  @db.Decimal(65, 2)
+  adat               Decimal  @db.Decimal(65, 2)
+  total_amount       Decimal  @db.Decimal(65, 2)
+
+  @@map("purchases")
+}

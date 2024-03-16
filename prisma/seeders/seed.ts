@@ -8,13 +8,8 @@ async function main() {
 
   await prisma.user.upsert({
     where: { email: 'admin@gmail.com' },
+    update: {},
     create: {
-      email: 'admin@gmail.com',
-      mobile_number: '9999999999',
-      name: 'Admin',
-      password: await bcrypt.hash('Pass@123', 10),
-    },
-    update: {
       email: 'admin@gmail.com',
       mobile_number: '9999999999',
       name: 'Admin',
@@ -24,12 +19,8 @@ async function main() {
 
   await prisma.supplier.upsert({
     where: { supplier_email: 'supplier@gmail.com' },
+    update: {},
     create: {
-      supplier_email: 'supplier@gmail.com',
-      mobile_number: '0000000000',
-      supplier_name: 'Supplier Name',
-    },
-    update: {
       supplier_email: 'supplier@gmail.com',
       mobile_number: '0000000000',
       supplier_name: 'Supplier Name',
@@ -38,51 +29,56 @@ async function main() {
 
   await prisma.purchaseItem.upsert({
     where: { item_name: 'Tur' },
+    update: {},
     create: {
-      item_name: 'Tur',
-    },
-    update: {
       item_name: 'Tur',
     },
   });
 
   await prisma.purchaseItem.upsert({
     where: { item_name: 'Chana' },
+    update: {},
     create: {
-      item_name: 'Chana',
-    },
-    update: {
       item_name: 'Chana',
     },
   });
-  
+
   await prisma.purchaseItem.upsert({
     where: { item_name: 'Soyabean' },
+    update: {},
     create: {
-      item_name: 'Soyabean',
-    },
-    update: {
       item_name: 'Soyabean',
     },
   });
 
   await prisma.purchaseItem.upsert({
     where: { item_name: 'Wheat' },
+    update: {},
     create: {
-      item_name: 'Wheat',
-    },
-    update: {
       item_name: 'Wheat',
     },
   });
 
   await prisma.purchaseItem.upsert({
     where: { item_name: 'Tur Kachari' },
+    update: {},
     create: {
       item_name: 'Tur Kachari',
     },
-    update: {
-      item_name: 'Tur Kachari',
+  });
+
+  await prisma.purchase.upsert({
+    where: { id: 1 },
+    update: {},
+    create: {
+      purchase_date: new Date('11-02-2020'),
+      bill_no: 101,
+      supplier_name: 'Supplier Name',
+      purchase_item_name: 'Chana',
+      weight: 3.76,
+      purchase_amount: 16305,
+      adat: 16305 * 0.0125,
+      total_amount: 16305 + 16305 * 0.0125,
     },
   });
 
