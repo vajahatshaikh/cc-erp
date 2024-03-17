@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PaginateFunction, paginator } from 'src/modules/prisma/paginator';
 import { PrismaService } from 'src/modules/prisma/prisma.service';
 
-const paginate: PaginateFunction = paginator({ perPage: 10 });
+// const paginate: PaginateFunction = paginator({ perPage: 10 });
 
 @Injectable()
 export class PurchaseRepository {
@@ -34,14 +34,14 @@ export class PurchaseRepository {
    * @description
    * Function to fetch matching records for given condition with pagination
    */
-  async findManyWithPaginate(page: number, select: any, where: any = {}) {
-    const pageNumber = page ? page : 1;
-    return await paginate(
-      this.prismaService.purchase,
-      { select: select, where: where },
-      { page: pageNumber },
-    );
-  }
+  // async findManyWithPaginate(page: number, select: any, where: any = {}) {
+  //   const pageNumber = page ? page : 1;
+  //   return await paginate(
+  //     this.prismaService.purchase,
+  //     { select: select, where: where },
+  //     { page: pageNumber },
+  //   );
+  // }
 
   /**
    * @description

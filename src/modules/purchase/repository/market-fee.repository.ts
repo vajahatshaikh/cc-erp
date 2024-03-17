@@ -5,7 +5,7 @@ import { PrismaService } from 'src/modules/prisma/prisma.service';
 // const paginate: PaginateFunction = paginator({ perPage: 10 });
 
 @Injectable()
-export class PurchaseItemRepository {
+export class MarketFeeRepository {
   constructor(private prismaService: PrismaService) {}
 
   /**
@@ -13,7 +13,7 @@ export class PurchaseItemRepository {
    *  Function to find first matching record for given condition
    */
   async findOne(select: any, where: any = {}) {
-    return await this.prismaService.purchaseItem.findFirst({
+    return await this.prismaService.marketFee.findFirst({
       select: select,
       where: where,
     });
@@ -24,7 +24,7 @@ export class PurchaseItemRepository {
    * Function to fetch matching records for given condition without pagination
    */
   async findMany(select: any, where: any = {}) {
-    return await this.prismaService.purchaseItem.findMany({
+    return await this.prismaService.marketFee.findMany({
       select: select,
       where: where,
     });
@@ -37,7 +37,7 @@ export class PurchaseItemRepository {
   // async findManyWithPaginate(page: number, select: any, where: any = {}) {
   //   const pageNumber = page ? page : 1;
   //   return await paginate(
-  //     this.prismaService.purchaseItem,
+  //     this.prismaService.marketFee,
   //     { select: select, where: where },
   //     { page: pageNumber },
   //   );
@@ -48,7 +48,7 @@ export class PurchaseItemRepository {
    * Function to fetch all records
    */
   async findAll() {
-    return await this.prismaService.purchaseItem.findMany();
+    return await this.prismaService.marketFee.findMany();
   }
 
   /**
@@ -56,7 +56,7 @@ export class PurchaseItemRepository {
    * Function to save record
    */
   async create(payload: any) {
-    return await this.prismaService.purchaseItem.create({ data: payload });
+    return await this.prismaService.marketFee.create({ data: payload });
   }
 
   /**
@@ -64,7 +64,7 @@ export class PurchaseItemRepository {
    * Function to save multiple record at once
    */
   async createMany(payload: any) {
-    return await this.prismaService.purchaseItem.createMany({
+    return await this.prismaService.marketFee.createMany({
       data: payload,
     });
   }
@@ -74,7 +74,7 @@ export class PurchaseItemRepository {
    * Function to update existing record
    */
   async update(where: any, payload: any) {
-    return await this.prismaService.purchaseItem.update({
+    return await this.prismaService.marketFee.update({
       where: where,
       data: payload,
     });
@@ -85,7 +85,7 @@ export class PurchaseItemRepository {
    * Function to update multiple existing record at once
    */
   async updateMany(where: any, payload: any) {
-    return await this.prismaService.purchaseItem.updateMany({
+    return await this.prismaService.marketFee.updateMany({
       where: where,
       data: payload,
     });
@@ -96,7 +96,7 @@ export class PurchaseItemRepository {
    * Function to upsert particular record
    */
   async upsert(where: any, createPayload: any, updatePayload: any) {
-    return await this.prismaService.purchaseItem.upsert({
+    return await this.prismaService.marketFee.upsert({
       where: where,
       update: updatePayload,
       create: createPayload,
@@ -108,7 +108,7 @@ export class PurchaseItemRepository {
    * Function to delete existing record
    */
   async delete(where: any) {
-    return await this.prismaService.purchaseItem.delete({
+    return await this.prismaService.marketFee.delete({
       where: where,
     });
   }
@@ -117,7 +117,7 @@ export class PurchaseItemRepository {
    * Function to delete multiple existing record at once
    */
   async deleteMany(where: any) {
-    return await this.prismaService.purchaseItem.deleteMany({
+    return await this.prismaService.marketFee.deleteMany({
       where: where,
     });
   }

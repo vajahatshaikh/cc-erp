@@ -52,3 +52,12 @@ model Purchase {
 
   @@map("purchases")
 }
+
+model MarketFee {
+  id                 Int      @id @default(autoincrement())
+  purchase_date      DateTime @default(now())
+  purchase_item_name String
+  market_cess        Decimal  @db.Decimal(65, 2)
+
+  @@map("market_fees")
+}

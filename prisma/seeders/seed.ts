@@ -82,6 +82,16 @@ async function main() {
     },
   });
 
+  await prisma.marketFee.upsert({
+    where: { id: 1 },
+    update: {},
+    create: {
+      purchase_date: new Date(),
+      purchase_item_name: 'Chana',
+      market_cess: 171.2,
+    },
+  });
+
   console.log('Seed.ts seeded successfully.');
 }
 

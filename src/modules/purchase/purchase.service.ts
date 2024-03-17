@@ -1,9 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { PurchaseRepository } from './repository';
+import { MarketFeeRepository, PurchaseRepository } from './repository';
 
 @Injectable()
 export class PurchaseService {
-  constructor(private readonly purchaseRepository: PurchaseRepository) {}
+  constructor(
+    private readonly purchaseRepository: PurchaseRepository,
+    private readonly marketFeeRepository: MarketFeeRepository,
+  ) {}
 
   async createPurchase(payload: any) {
     try {
@@ -28,9 +31,23 @@ export class PurchaseService {
 
   async createBulkPurchase(payload: any) {
     try {
-      const data = JSON.parse(payload.bulk_payload);
+      const data: any = JSON.parse(payload.bulk_payload);
 
       await this.purchaseRepository.createMany(data);
+
+      data.map(async (currData: any) => {
+        console.log('currData.purchase_amount: ', currData.purchase_amount);
+        console.log(
+          'Number(process.env.MARKET_CESS_VALUE): ',
+          Number(process.env.MARKET_CESS_VALUE),
+        );
+
+        await this.marketFeeRepository.create({
+          purchase_item_name: currData.purchase_item_name,
+          market_cess:
+            currData.purchase_amount * Number(process.env.MARKET_CESS_VALUE),
+        });
+      });
       return {
         status: true,
         message: 'Bulk purchase added successfully.',
