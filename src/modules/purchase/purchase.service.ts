@@ -39,13 +39,13 @@ export class PurchaseService {
         console.log('currData.purchase_amount: ', currData.purchase_amount);
         console.log(
           'Number(process.env.MARKET_CESS_VALUE): ',
-          Number(process.env.MARKET_CESS_VALUE),
+          0.0105,
         );
 
         await this.marketFeeRepository.create({
           purchase_item_name: currData.purchase_item_name,
           market_cess:
-            currData.purchase_amount * Number(process.env.MARKET_CESS_VALUE),
+            currData.purchase_amount * 0.0105,
         });
       });
       return {
