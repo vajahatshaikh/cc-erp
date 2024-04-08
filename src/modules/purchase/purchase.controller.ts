@@ -1,4 +1,4 @@
-import { Body, Controller, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { PurchaseService } from './purchase.service';
 import { AuthGuard } from '../auth/guard/auth.guard';
 import { CreatePurchaseDto } from './dto';
@@ -17,5 +17,11 @@ export class PurchaseController {
   @Post('create-bulk')
   createBulkPurchase(@Body() body: any) {
     return this.purchaseService.createBulkPurchase(body);
+  }
+
+  @UseGuards(AuthGuard)
+  @Get()
+  fetchAllPurchases() {
+    return this.purchaseService.fetchAllPurchases();
   }
 }
