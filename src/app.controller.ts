@@ -33,6 +33,13 @@ export class AppController {
           }
         });
       });
+      const readStream = fs.createReadStream(filePath);
+      res.setHeader(
+        'Content-Disposition',
+        `attachment; filename="${fileName}"`,
+      );
+
+      readStream.pipe(res);
       return res.sendFile(filePath);
     } catch (error) {
       console.error('Error fetching file:', error);
