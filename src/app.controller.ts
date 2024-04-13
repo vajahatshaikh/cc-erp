@@ -40,7 +40,7 @@ export class AppController {
       );
 
       readStream.pipe(res);
-      return res.sendFile(filePath);
+      // return res.sendFile(filePath);
     } catch (error) {
       console.error('Error fetching file:', error);
       return res.status(404).send('File not found'); // Handle errors gracefully
