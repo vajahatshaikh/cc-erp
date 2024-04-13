@@ -16,8 +16,8 @@ export class AppController {
   @Get('file/:fileName')
   async getFile(@Param('fileName') fileName: string, @Res() res: Response) {
     const filePath = join(
-      __dirname,
-      // join(__dirname, '..'),
+      // __dirname,
+      join(__dirname, '..'),
       '..',
       'src',
       'templates',
