@@ -46,4 +46,31 @@ export class AppController {
       return res.status(404).send('File not found'); // Handle errors gracefully
     }
   }
+
+  @Get('download')
+  async downloadFile(@Res() res: Response) {
+    try {
+      // Read the file into memory
+      const filePath = join(
+        __dirname,
+        // join(__dirname, '..'),
+        '..',
+        'src',
+        'templates',
+        'test.pdf',
+      ); // Adjust path as needed // Update with your file path
+      const fileContent = fs.readFileSync(filePath);
+
+      // Create a blob object
+      const blob = new Blob([fileContent], { type: 'application/pdf' }); // Adjust the MIME type accordingly
+
+      // Send the blob object as the response
+      res.setHeader('Content-Disposition', 'attachment; filename="test.pdf"'); // Optional: Set the filename for download
+      res.setHeader('Content-Type', 'application/pdf'); // Set the appropriate content type
+      res.send(fileContent);
+    } catch (error) {
+      console.error('Error downloading file:', error);
+      res.status(500).send('Internal Server Error');
+    }
+  }
 }
