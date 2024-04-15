@@ -1,0 +1,671 @@
+<html>
+  <head>
+    <title>Purchase Report</title>
+  </head>
+  <body>
+    <h1 style='text-align: center'>PURCHASE REPORT</h1>
+
+    <p style='text-align: center'>Address: Shop No.3, APMC, Babhulgaon</p>
+    <p style='text-align: center'>Contact No. <b>9423131301</b></p>
+
+    <p style='text-align: center'>Date of Statement: {{dateOfStatement}}</p>
+    <p style='text-align: center'>
+      Statement:
+      {{startDate}}
+      to
+      {{endDate}}
+    </p>
+
+    {{#if turHasRows}}
+      <h3>TUR</h3>
+      <table style='border-collapse: collapse; width: 100%; text-align: center'>
+        <thead>
+          <tr>
+            <th style='border: 1px solid black; padding: 5px'>#</th>
+            <th style='border: 1px solid black; padding: 5px'>Date</th>
+            <th style='border: 1px solid black; padding: 5px'>Bill No</th>
+            <th style='border: 1px solid black; padding: 5px'>Party</th>
+            <th style='border: 1px solid black; padding: 5px'>Material</th>
+            <th style='border: 1px solid black; padding: 5px'>Weight</th>
+            <th style='border: 1px solid black; padding: 5px'>Purchase Amount</th>
+            <th style='border: 1px solid black; padding: 5px'>Adat</th>
+            <th style='border: 1px solid black; padding: 5px'>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each purchases}}
+            {{#if isTur}}
+              <tr>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{@index}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{purchase_date}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{bill_no}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{supplier_name}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{purchase_item_name}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{weight}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >₹{{purchase_amount}}</td>
+                <td style='border: 1px solid black; padding: 5px'>₹{{adat}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >₹{{total_amount}}</td>
+              </tr>
+            {{/if}}
+          {{/each}}
+        </tbody>
+        <tfoot>
+          <tr>
+            <th
+              style='border: 1px solid black; padding: 5px; text-align: right'
+              colspan='5'
+            >
+              Total
+            </th>
+            <td style='border: 1px solid black; padding: 5px'>{{turKgTo}}</td>
+            <td
+              style='border: 1px solid black; padding: 5px'
+            >₹{{turPurAmtTo}}</td>
+            <td
+              style='border: 1px solid black; padding: 5px'
+            >₹{{turAdatTo}}</td>
+            <td
+              style='border: 1px solid black; padding: 5px'
+            >₹{{turTotalTo}}</td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <br /><br /><br />
+    {{/if}}
+
+    {{#if chanaHasRows}}
+      <h3>CHANA</h3>
+      <table style='border-collapse: collapse; width: 100%; text-align: center'>
+        <thead>
+          <tr>
+            <th style='border: 1px solid black; padding: 5px'>#</th>
+            <th style='border: 1px solid black; padding: 5px'>Date</th>
+            <th style='border: 1px solid black; padding: 5px'>Bill No</th>
+            <th style='border: 1px solid black; padding: 5px'>Party</th>
+            <th style='border: 1px solid black; padding: 5px'>Material</th>
+            <th style='border: 1px solid black; padding: 5px'>Weight</th>
+            <th style='border: 1px solid black; padding: 5px'>Purchase Amount</th>
+            <th style='border: 1px solid black; padding: 5px'>Adat</th>
+            <th style='border: 1px solid black; padding: 5px'>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each purchases}}
+            {{#if isChana}}
+              <tr>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{@index}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{purchase_date}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{bill_no}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{supplier_name}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{purchase_item_name}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{weight}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >₹{{purchase_amount}}</td>
+                <td style='border: 1px solid black; padding: 5px'>₹{{adat}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >₹{{total_amount}}</td>
+              </tr>
+            {{/if}}
+          {{/each}}
+        </tbody>
+        <tfoot>
+          <tr>
+            <th
+              style='border: 1px solid black; padding: 5px; text-align: right'
+              colspan='5'
+            >
+              Total
+            </th>
+            <td style='border: 1px solid black; padding: 5px'>{{chanaKgTo}}</td>
+            <td
+              style='border: 1px solid black; padding: 5px'
+            >₹{{chanaPurAmtTo}}</td>
+            <td
+              style='border: 1px solid black; padding: 5px'
+            >₹{{chanaAdatTo}}</td>
+            <td
+              style='border: 1px solid black; padding: 5px'
+            >₹{{chanaTotalTo}}</td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <br /><br /><br />
+    {{/if}}
+
+    {{#if soyabeanHasRows}}
+      <h3>SOYABEAN</h3>
+      <table style='border-collapse: collapse; width: 100%; text-align: center'>
+        <thead>
+          <tr>
+            <th style='border: 1px solid black; padding: 5px'>#</th>
+            <th style='border: 1px solid black; padding: 5px'>Date</th>
+            <th style='border: 1px solid black; padding: 5px'>Bill No</th>
+            <th style='border: 1px solid black; padding: 5px'>Party</th>
+            <th style='border: 1px solid black; padding: 5px'>Material</th>
+            <th style='border: 1px solid black; padding: 5px'>Weight</th>
+            <th style='border: 1px solid black; padding: 5px'>Purchase Amount</th>
+            <th style='border: 1px solid black; padding: 5px'>Adat</th>
+            <th style='border: 1px solid black; padding: 5px'>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each purchases}}
+            {{#if isSoyabean}}
+              <tr>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{@index}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{purchase_date}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{bill_no}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{supplier_name}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{purchase_item_name}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{weight}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >₹{{purchase_amount}}</td>
+                <td style='border: 1px solid black; padding: 5px'>₹{{adat}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >₹{{total_amount}}</td>
+              </tr>
+            {{/if}}
+          {{/each}}
+        </tbody>
+        <tfoot>
+          <tr>
+            <th
+              style='border: 1px solid black; padding: 5px; text-align: right'
+              colspan='5'
+            >
+              Total
+            </th>
+            <td
+              style='border: 1px solid black; padding: 5px'
+            >{{soyabeanKgTo}}</td>
+            <td
+              style='border: 1px solid black; padding: 5px'
+            >₹{{soyabeanPurAmtTo}}</td>
+            <td
+              style='border: 1px solid black; padding: 5px'
+            >₹{{soyabeanAdatTo}}</td>
+            <td
+              style='border: 1px solid black; padding: 5px'
+            >₹{{soyabeanTotalTo}}</td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <br /><br /><br />
+    {{/if}}
+
+    {{#if wheatHasRows}}
+      <h3>WHEAT</h3>
+      <table style='border-collapse: collapse; width: 100%; text-align: center'>
+        <thead>
+          <tr>
+            <th style='border: 1px solid black; padding: 5px'>#</th>
+            <th style='border: 1px solid black; padding: 5px'>Date</th>
+            <th style='border: 1px solid black; padding: 5px'>Bill No</th>
+            <th style='border: 1px solid black; padding: 5px'>Party</th>
+            <th style='border: 1px solid black; padding: 5px'>Material</th>
+            <th style='border: 1px solid black; padding: 5px'>Weight</th>
+            <th style='border: 1px solid black; padding: 5px'>Purchase Amount</th>
+            <th style='border: 1px solid black; padding: 5px'>Adat</th>
+            <th style='border: 1px solid black; padding: 5px'>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each purchases}}
+            {{#if isWheat}}
+              <tr>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{@index}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{purchase_date}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{bill_no}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{supplier_name}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{purchase_item_name}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{weight}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >₹{{purchase_amount}}</td>
+                <td style='border: 1px solid black; padding: 5px'>₹{{adat}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >₹{{total_amount}}</td>
+              </tr>
+            {{/if}}
+          {{/each}}
+        </tbody>
+        <tfoot>
+          <tr>
+            <th
+              style='border: 1px solid black; padding: 5px; text-align: right'
+              colspan='5'
+            >
+              Total
+            </th>
+            <td style='border: 1px solid black; padding: 5px'>{{wheatKgTo}}</td>
+            <td
+              style='border: 1px solid black; padding: 5px'
+            >₹{{wheatPurAmtTo}}</td>
+            <td
+              style='border: 1px solid black; padding: 5px'
+            >₹{{wheatAdatTo}}</td>
+            <td
+              style='border: 1px solid black; padding: 5px'
+            >₹{{wheatTotalTo}}</td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <br /><br /><br />
+    {{/if}}
+
+    {{#if turKachariHasRows}}
+      <h3>TUR KACHARI</h3>
+      <table style='border-collapse: collapse; width: 100%; text-align: center'>
+        <thead>
+          <tr>
+            <th style='border: 1px solid black; padding: 5px'>#</th>
+            <th style='border: 1px solid black; padding: 5px'>Date</th>
+            <th style='border: 1px solid black; padding: 5px'>Bill No</th>
+            <th style='border: 1px solid black; padding: 5px'>Party</th>
+            <th style='border: 1px solid black; padding: 5px'>Material</th>
+            <th style='border: 1px solid black; padding: 5px'>Weight</th>
+            <th style='border: 1px solid black; padding: 5px'>Purchase Amount</th>
+            <th style='border: 1px solid black; padding: 5px'>Adat</th>
+            <th style='border: 1px solid black; padding: 5px'>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each purchases}}
+            {{#if isTurKachari}}
+              <tr>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{@index}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{purchase_date}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{bill_no}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{supplier_name}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{purchase_item_name}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >{{weight}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >₹{{purchase_amount}}</td>
+                <td style='border: 1px solid black; padding: 5px'>₹{{adat}}</td>
+                <td
+                  style='border: 1px solid black; padding: 5px'
+                >₹{{total_amount}}</td>
+              </tr>
+            {{/if}}
+          {{/each}}
+        </tbody>
+        <tfoot>
+          <tr>
+            <th
+              style='border: 1px solid black; padding: 5px; text-align: right'
+              colspan='5'
+            >
+              Total
+            </th>
+            <td
+              style='border: 1px solid black; padding: 5px'
+            >{{turKachariKgTo}}</td>
+            <td
+              style='border: 1px solid black; padding: 5px'
+            >₹{{turKachariPurAmtTo}}</td>
+            <td
+              style='border: 1px solid black; padding: 5px'
+            >₹{{turKachariAdatTo}}</td>
+            <td
+              style='border: 1px solid black; padding: 5px'
+            >₹{{turKachariTotalTo}}</td>
+          </tr>
+        </tfoot>
+      </table>
+
+      <br /><br /><br />
+    {{/if}}
+
+    <table style='border-collapse: collapse; width: 100%; text-align: center'>
+      <thead>
+        <tr>
+          <th style='text-align: left; border: 1px solid black; padding: 5px'>
+            #
+          </th>
+
+          {{#if turHasRows}}
+            <th style='text-align: left; border: 1px solid black; padding: 5px'>
+              TUR
+            </th>
+          {{/if}}
+
+          {{#if chanaHasRows}}
+            <th style='text-align: left; border: 1px solid black; padding: 5px'>
+              CHANA
+            </th>
+          {{/if}}
+
+          {{#if soyabeanHasRows}}
+            <th style='text-align: left; border: 1px solid black; padding: 5px'>
+              SOYABEAN
+            </th>
+          {{/if}}
+
+          {{#if wheatHasRows}}
+            <th style='text-align: left; border: 1px solid black; padding: 5px'>
+              WHEAT
+            </th>
+          {{/if}}
+
+          {{#if turKachariHasRows}}
+            <th style='text-align: left; border: 1px solid black; padding: 5px'>
+              TUR KACHARI
+            </th>
+          {{/if}}
+
+          {{! <th style='text-align: left; border: 1px solid black; padding: 5px'>
+            TOTAL
+          </th> }}
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+
+          <th style='text-align: left; border: 1px solid black; padding: 5px'>
+            PADTA
+          </th>
+
+          {{#if turHasRows}}
+            <td style='text-align: left; border: 1px solid black; padding: 5px'>
+              ₹{{turPadtaPurAmt}}
+            </td>
+          {{/if}}
+
+          {{#if chanaHasRows}}
+            <td style='text-align: left; border: 1px solid black; padding: 5px'>
+              ₹{{chanaPadtaPurAmt}}
+            </td>
+          {{/if}}
+
+          {{#if soyabeanHasRows}}
+            <td style='text-align: left; border: 1px solid black; padding: 5px'>
+              ₹{{soyabeanPadtaPurAmt}}
+            </td>
+          {{/if}}
+
+          {{#if wheatHasRows}}
+            <td style='text-align: left; border: 1px solid black; padding: 5px'>
+              ₹{{wheatPadtaPurAmt}}
+            </td>
+          {{/if}}
+
+          {{#if turKachariHasRows}}
+            <td style='text-align: left; border: 1px solid black; padding: 5px'>
+              ₹{{turKachariPadtaPurAmt}}
+            </td>
+          {{/if}}
+        </tr>
+        <tr>
+          <th style='text-align: left; border: 1px solid black; padding: 5px'>
+            PADTA(WEIGHT)
+          </th>
+
+          {{#if turHasRows}}
+            <td style='text-align: left; border: 1px solid black; padding: 5px'>
+              {{turPadtaWeight}}
+            </td>
+          {{/if}}
+
+          {{#if chanaHasRows}}
+            <td style='text-align: left; border: 1px solid black; padding: 5px'>
+              {{chanaPadtaWeight}}
+            </td>
+          {{/if}}
+
+          {{#if soyabeanHasRows}}
+            <td style='text-align: left; border: 1px solid black; padding: 5px'>
+              {{soyabeanPadtaWeight}}
+            </td>
+          {{/if}}
+
+          {{#if wheatHasRows}}
+            <td style='text-align: left; border: 1px solid black; padding: 5px'>
+              {{wheatPadtaWeight}}
+            </td>
+          {{/if}}
+
+          {{#if turKachariHasRows}}
+            <td style='text-align: left; border: 1px solid black; padding: 5px'>
+              {{turKachariPadtaWeight}}
+            </td>
+          {{/if}}
+        </tr>
+        <tr>
+          <th style='text-align: left; border: 1px solid black; padding: 5px'>
+            ADAT
+          </th>
+
+          {{#if turHasRows}}
+            <td style='text-align: left; border: 1px solid black; padding: 5px'>
+              {{turPadtaAdat}}
+            </td>
+          {{/if}}
+
+          {{#if chanaHasRows}}
+            <td style='text-align: left; border: 1px solid black; padding: 5px'>
+              {{chanaPadtaAdat}}
+            </td>
+          {{/if}}
+
+          {{#if soyabeanHasRows}}
+            <td style='text-align: left; border: 1px solid black; padding: 5px'>
+              {{soyabeanPadtaAdat}}
+            </td>
+          {{/if}}
+
+          {{#if wheatHasRows}}
+            <td style='text-align: left; border: 1px solid black; padding: 5px'>
+              {{wheatPadtaAdat}}
+            </td>
+          {{/if}}
+
+          {{#if turKachariHasRows}}
+            <td style='text-align: left; border: 1px solid black; padding: 5px'>
+              {{turKachariPadtaAdat}}
+            </td>
+          {{/if}}
+        </tr>
+      </tbody>
+    </table>
+
+    <br /><br /><br />
+
+    <div
+      style='display: flex; flex-direction: row; justify-content: space-between'
+    >
+      <table style='border-collapse: collapse; width: 45%; text-align: center'>
+        <thead>
+          <tr>
+            <th colspan='2' style='border: 1px solid black; padding: 5px'>
+              MARKET FEE
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#if turHasRows}}
+            <tr>
+              <th
+                style='text-align: left; border: 1px solid black; padding: 5px'
+              >
+                TUR
+              </th>
+              <td
+                style='border: 1px solid black; padding: 5px'
+              >₹{{turMarketFee}}</td>
+            </tr>
+          {{/if}}
+
+          {{#if chanaHasRows}}
+            <tr>
+              <th
+                style='text-align: left; border: 1px solid black; padding: 5px'
+              >
+                CHANA
+              </th>
+              <td
+                style='border: 1px solid black; padding: 5px'
+              >₹{{chanaMarketFee}}</td>
+            </tr>
+          {{/if}}
+
+          {{#if soyabeanHasRows}}
+            <tr>
+              <th
+                style='text-align: left; border: 1px solid black; padding: 5px'
+              >
+                SOYABEAN
+              </th>
+              <td
+                style='border: 1px solid black; padding: 5px'
+              >₹{{soyabeanMarketFee}}</td>
+            </tr>
+          {{/if}}
+
+          {{#if wheatHasRows}}
+            <tr>
+              <th
+                style='text-align: left; border: 1px solid black; padding: 5px'
+              >
+                WHEAT
+              </th>
+              <td
+                style='border: 1px solid black; padding: 5px'
+              >₹{{wheatMarketFee}}</td>
+            </tr>
+          {{/if}}
+
+          {{#if turKachariHasRows}}
+            <tr>
+              <th
+                style='text-align: left; border: 1px solid black; padding: 5px'
+              >
+                TUR KACHARI
+              </th>
+              <td
+                style='border: 1px solid black; padding: 5px'
+              >₹{{turKachariMarketFee}}</td>
+            </tr>
+          {{/if}}
+        </tbody>
+      </table>
+
+      <table style='border-collapse: collapse; width: 45%; text-align: center'>
+        <thead>
+          <tr>
+            <th colspan='2' style='border: 1px solid black; padding: 5px'>
+              Total Payment
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th style='text-align: left; border: 1px solid black; padding: 5px'>
+              Total Payment Due
+            </th>
+            <td
+              style='border: 1px solid black; padding: 5px'
+            >₹{{totalPaymentDue._sum.purchase_amount}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <br /><br /><br />
+
+    <table style='border-collapse: collapse; width: 50%; text-align: center'>
+      <thead>
+        <tr>
+          <th colspan='2' style='border: 1px solid black; padding: 5px'>
+            Total Payment Dues
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each totalPaymentDues}}
+          <tr>
+            <th style='text-align: left; border: 1px solid black; padding: 5px'>
+              {{supplier_name}}
+            </th>
+            <td
+              style='border: 1px solid black; padding: 5px'
+            >₹{{_sum.purchase_amount}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </body>
+</html>

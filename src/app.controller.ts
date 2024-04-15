@@ -52,8 +52,8 @@ export class AppController {
     try {
       // Read the file into memory
       const filePath = join(
-        __dirname,
-        // join(__dirname, '..'),
+        __dirname, /** SERVER */
+        // join(__dirname, '..'), /**LOCAL */
         '..',
         'src',
         'templates',

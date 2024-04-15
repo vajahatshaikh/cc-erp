@@ -121,4 +121,63 @@ export class PurchaseRepository {
       where: where,
     });
   }
+
+  /**
+   * @description
+   * Function to groupBy matching records for given condition
+   */
+  async fetchTotalPaymentDueByUser(startDate: any, endDate: any) {
+    return await this.prismaService.purchase.groupBy({
+      _sum: {
+        purchase_amount: true,
+      },
+      where: {
+        purchase_date: {
+          gte: startDate,
+          lte: endDate,
+        },
+      },
+      by: 'supplier_name',
+    });
+  }
+
+  /**
+   * @description
+   * Function to groupBy matching records for given condition
+   */
+  async fetchTotalPaymentDue(startDate: any, endDate: any) {
+    return await this.prismaService.purchase.aggregate({
+      _sum: {
+        purchase_amount: true
+      },
+      where: {
+        purchase_date: {
+          gte: startDate,
+          lte: endDate,
+        },
+      },
+    });
+  }
+
+  /**
+   * @description
+   * Function to groupBy matching records for given condition
+   */
+  async groupBy(where: any, groupBy: any) {
+    return await this.prismaService.purchase.groupBy({
+      _sum: {
+        purchase_amount: true,
+      },
+      where: where,
+      by: groupBy,
+    });
+  }
+
+  /**
+   * @description
+   * Function to groupBy matching records for given condition
+   */
+  async aggregationFunction(condition: any) {
+    return await this.prismaService.purchase.aggregate(condition);
+  }
 }

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
 import { PurchaseService } from './purchase.service';
 import { AuthGuard } from '../auth/guard/auth.guard';
 import { CreatePurchaseDto } from './dto';
@@ -23,5 +23,11 @@ export class PurchaseController {
   @Get()
   fetchAllPurchases() {
     return this.purchaseService.fetchAllPurchases();
+  }
+
+  @UseGuards(AuthGuard)
+  @Get('download')
+  downloadPurchases(@Query() {startDate, endDate}: any) {
+    return this.purchaseService.downloadPurchases(startDate, endDate);
   }
 }
