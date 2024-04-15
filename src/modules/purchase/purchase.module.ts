@@ -3,11 +3,16 @@ import { PurchaseService } from './purchase.service';
 import { PurchaseController } from './purchase.controller';
 import { MarketFeeRepository, PurchaseRepository } from './repository';
 import { PrismaModule } from '../prisma/prisma.module';
-import { PdfHelper } from 'src/common/helpers/pdf-helper';
+import { PdfHelper } from './pdf-helper';
 
 @Module({
   imports: [PrismaModule],
   controllers: [PurchaseController],
-  providers: [PurchaseService, PurchaseRepository, MarketFeeRepository, PdfHelper],
+  providers: [
+    PurchaseService,
+    PurchaseRepository,
+    MarketFeeRepository,
+    PdfHelper,
+  ],
 })
 export class PurchaseModule {}

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { PdfHelper } from 'src/common/helpers/pdf-helper';
 import { MarketFeeRepository, PurchaseRepository } from './repository';
+import { PdfHelper } from './pdf-helper';
 
 @Injectable()
 export class PurchaseService {
@@ -336,7 +336,8 @@ export class PurchaseService {
       let turKachariPadtaAdat = turKachariPadtaRes._avg.adat;
 
       // Total Payment Due
-      let totalPaymentDue: any = await this.purchaseRepository.fetchTotalPaymentDue(startDate, endDate)
+      let totalPaymentDue: any =
+        await this.purchaseRepository.fetchTotalPaymentDue(startDate, endDate);
       let wheatMarketFee = (1.05 / 100) * wheatPurAmtTo; // Calculate 1.05% of purchase amount
       let turMarketFee = (1.05 / 100) * turPurAmtTo; // Calculate 1.05% of purchase amount
       let chanaMarketFee = (1.05 / 100) * chanaPurAmtTo; // Calculate 1.05% of purchase amount
