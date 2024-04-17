@@ -25,7 +25,7 @@ export class PurchaseController {
     return this.purchaseService.fetchAllPurchases();
   }
 
-  @UseGuards(AuthGuard)
+  // @UseGuards(AuthGuard)
   @Get('download')
   downloadPurchases(@Query() {startDate, endDate}: any) {
     return this.purchaseService.downloadPurchases(startDate, endDate);

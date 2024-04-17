@@ -29,8 +29,8 @@ export class PdfHelper {
         };
       }
       const templatePath = path.join(
-        __dirname, /** SERVER */
-        // path.join(__dirname, '..') /**LOCAL */,
+        // __dirname, /** SERVER */
+        path.join(__dirname, '..') /**LOCAL */,
         '..',
         '..',
         '..',
