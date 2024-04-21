@@ -124,8 +124,8 @@ export class PurchaseService {
         },
         {
           purchase_date: {
-            gte: startDate,
-            lte: endDate,
+            gt: startDate,
+            lt: endDate,
           },
         },
       );
